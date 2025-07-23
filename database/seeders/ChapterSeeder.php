@@ -3,20 +3,17 @@
 namespace Database\Seeders;
 
 use App\Models\Chapter;
-use App\Models\Lesson;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-/**
- * 数据填充
- */
-class LessonSeeder extends Seeder
+class ChapterSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Lesson::factory(9)->has(Chapter::factory(6))->create(); // 在创建课程时候，把6个章节创造出来
+        //
+        // Chapter::factory(6)->create(); #这个就没用了
     }
 }
