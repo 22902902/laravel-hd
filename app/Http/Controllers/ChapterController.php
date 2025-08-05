@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreChapterRequest;
 use App\Http\Requests\UpdateChapterRequest;
+use App\Http\Resources\ChapterResource;
 use App\Models\Chapter;
 
 class ChapterController extends Controller
@@ -13,7 +14,8 @@ class ChapterController extends Controller
      */
     public function index()
     {
-        //
+        // 找到章节资源，返回回去
+        return ChapterResource::collection(Chapter::all());
     }
 
     /**

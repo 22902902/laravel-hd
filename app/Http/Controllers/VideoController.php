@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreVideoRequest;
 use App\Http\Requests\UpdateVideoRequest;
+use App\Http\Resources\VideoResource;
 use App\Models\Video;
 
 class VideoController extends Controller
@@ -14,6 +15,7 @@ class VideoController extends Controller
     public function index()
     {
         //
+        return VideoResource::collection(Video::paginate(10)); // 分页
     }
 
     /**
