@@ -13,8 +13,13 @@ class Lesson extends Model
     /**
      * 定义关联关系
      */
-    public function chapters() {
+    public function chapter() {
         // 包含多个章节
         return $this->hasMany(Chapter::class);
+    }
+
+    // 课程中关联定义上
+    public function videos() {
+        return $this->hasMany(Video::class);
     }
 }
