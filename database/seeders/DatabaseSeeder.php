@@ -15,14 +15,15 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+//        User::factory()->create([
+//            'name' => 'Test User',
+//            'email' => 'test@example.com',
+//        ]);
         // 执行填充数据,执行php artisan db:seed
         // php artisan migrate:fresh --seed 表全删干净，再创建表，再填充数据
         $this->call([
             LessonSeeder::class,
+            UserSeeder::class,
             //ChapterSeeder::class, # 不用这种方式
         ]);
     }
