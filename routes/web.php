@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\VideoController;
@@ -16,3 +17,7 @@ Route::apiResource('lesson', LessonController::class);
 Route::apiResource('chapter', ChapterController::class);
 Route::apiResource('video', VideoController::class);
 
+
+// 登陆注册
+Route::post('/auth/register', [AuthController::class, 'register']);
+Route::post('/auth/login', [AuthController::class, 'login']);
