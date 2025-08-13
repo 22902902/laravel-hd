@@ -23,6 +23,12 @@ class AuthController extends Controller
         return ['user' => $user->refresh()];
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        return ['message' => '退出成功'];
+    }
+
     // 手机号、邮箱、账号
     public function login(Request $request, User $user)
     {
