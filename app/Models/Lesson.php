@@ -10,6 +10,13 @@ class Lesson extends Model
     /** @use HasFactory<\Database\Factories\LessonFactory> */
     use HasFactory;
 
+    // 告诉它哪些数据是要填的
+    protected $fillable = [
+        'title',
+        'description',
+        'preview'
+    ];
+
     /**
      * 定义关联关系
      */

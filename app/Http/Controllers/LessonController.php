@@ -8,6 +8,7 @@ use App\Http\Resources\LessonResource;
 use App\Models\Lesson;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Gate;
 
 class LessonController extends Controller implements HasMiddleware
 {
@@ -47,9 +48,13 @@ class LessonController extends Controller implements HasMiddleware
      * 课程的保存
      * Store a newly created resource in storage.
      */
-    public function store(StoreLessonRequest $request)
+    public function store(StoreLessonRequest $request, Lesson $lesson) // 注入一个空对象
     {
-        return $request->input(); // 得到数据
+        //return $request->input(); // 得到数据
+        Gate::authorize('create', $lesson); // 策略，自动返回LessonPolicy
+        $lesson->fill($request->input()); // 填充表单项数据
+        $lesson->save(); // 保存
+        return new LessonResource($lesson); // 最后把新数据返回
     }
 
     /**
@@ -57,7 +62,7 @@ class LessonController extends Controller implements HasMiddleware
      */
     public function show(Lesson $lesson)
     {
-        //
+        return new LessonResource($lesson);
     }
 
     /**
@@ -73,7 +78,9 @@ class LessonController extends Controller implements HasMiddleware
      */
     public function update(UpdateLessonRequest $request, Lesson $lesson)
     {
-        //
+        $lesson->fill($request->input()); // 填充表单项数据
+        $lesson->save(); // 保存
+        return new LessonResource($lesson); // 最后把新数据返回
     }
 
     /**

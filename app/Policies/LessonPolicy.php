@@ -8,6 +8,11 @@ use Illuminate\Auth\Access\Response;
 
 class LessonPolicy
 {
+    // 定义函数
+    public function before(User $user, $ability)
+    {
+        return $user->is_admin; // 只有超级管理员有
+    }
     /**
      * Determine whether the user can view any models.
      */
@@ -29,7 +34,7 @@ class LessonPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true; // 策略
     }
 
     /**
