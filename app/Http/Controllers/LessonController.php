@@ -81,6 +81,7 @@ class LessonController extends Controller implements HasMiddleware
      */
     public function update(UpdateLessonRequest $request, Lesson $lesson)
     {
+        Gate::authorize('update', $lesson); // 策略，自动返回LessonPolicy
         $lesson->fill($request->input()); // 填充表单项数据
         $lesson->save(); // 保存
         return new LessonResource($lesson); // 最后把新数据返回
@@ -91,6 +92,7 @@ class LessonController extends Controller implements HasMiddleware
      */
     public function destroy(Lesson $lesson)
     {
+        Gate::authorize('delete', $lesson); // 策略，自动返回LessonPolicy
         $lesson->delete();
         return $this->respondNoContent(); // 204
     }

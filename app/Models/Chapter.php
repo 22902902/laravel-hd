@@ -11,6 +11,12 @@ class Chapter extends Model
     /** @use HasFactory<\Database\Factories\ChapterFactory> */
     use HasFactory;
 
+    // 设置章节填充字段
+    protected $fillable = [
+        'title',
+        'preview',
+        'description'
+    ];
     // 章节中包含多个视频
     public function videos() {
         return $this->hasMany(Video::class);
