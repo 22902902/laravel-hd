@@ -33,7 +33,10 @@ class LessonController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        return Lesson::paginate(9);
+        //return Lesson::paginate(9);
+        //return user('id');
+        //return $this->respondOk('aaa');
+        return LessonResource::collection(Lesson::paginate(9));
     }
 
     /**
@@ -88,6 +91,7 @@ class LessonController extends Controller implements HasMiddleware
      */
     public function destroy(Lesson $lesson)
     {
-        //
+        $lesson->delete();
+        return $this->respondNoContent(); // 204
     }
 }

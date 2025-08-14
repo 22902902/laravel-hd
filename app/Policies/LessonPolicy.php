@@ -11,7 +11,9 @@ class LessonPolicy
     // 定义函数
     public function before(User $user, $ability)
     {
-        return $user->is_admin; // 只有超级管理员有
+        //return $user->is_admin; // 只有超级管理员有
+        // 直接用帮助函数
+        return isAdministrator();
     }
     /**
      * Determine whether the user can view any models.

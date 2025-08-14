@@ -36,7 +36,7 @@ class User extends Authenticatable
     ];
 
     protected $appends = [
-        'is_admin'
+        'is_administrator'
     ];
 
 
@@ -65,7 +65,7 @@ class User extends Authenticatable
 //    }
 
     // 用这个，计算属性
-    protected function isAdmin(): Attribute
+    protected function isAdministrator(): Attribute
     {
         // linux root 1
         return Attribute::make(
